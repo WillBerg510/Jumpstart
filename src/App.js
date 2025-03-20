@@ -58,7 +58,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {fields, userName, email, password, confirmPassword} = this.state;
+    const {fields} = this.state;
     return (
       <div className="App">
         <div className="header">
@@ -72,7 +72,7 @@ class App extends React.Component {
             <h3 className="inputText">Name:</h3>
             <input type="text" name="userName" placeholder="John Smith" onChange={(e) => {
               this.setState({fields: {
-                ...fields, userName: {...userName, value: e.target.value}
+                ...fields, userName: {...fields.userName, value: e.target.value}
               }});
             }}/>
             <p className="error">{fields.userName.error}</p>
@@ -81,7 +81,7 @@ class App extends React.Component {
             <h3 className="inputText">Email:</h3>
             <input type="text" name="email" placeholder="johnsmith123@email.com" onChange={(e) => {
               this.setState({fields: {
-                ...fields, email: {...email, value: e.target.value}
+                ...fields, email: {...fields.email, value: e.target.value}
               }});
             }}/>
             <p className="error">{fields.email.error}</p>
@@ -90,7 +90,7 @@ class App extends React.Component {
             <h3 className="inputText">Password:</h3>
             <input type="password" name="password" placeholder="**************" onChange={(e) => {
               this.setState({fields: {
-                ...fields, password: {...password, value: e.target.value}
+                ...fields, password: {...fields.password, value: e.target.value}
               }});
             }}/>
             <p className="error">{fields.password.error}</p>
@@ -99,7 +99,7 @@ class App extends React.Component {
             <h3 className="inputText">Confirm Password:</h3>
             <input type="password" name="confirmPassword" placeholder="**************" onChange={(e) => {
               this.setState({fields: {
-                ...fields, confirmPassword: {...confirmPassword, value: e.target.value}
+                ...fields, confirmPassword: {...fields.confirmPassword, value: e.target.value}
               }});
             }}/>
             <p className="error">{fields.confirmPassword.error}</p>
