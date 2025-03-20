@@ -1,38 +1,110 @@
 .App {
-  text-align: center;
+  background-color: #3366ff;
+  width: 100vw;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  height: 100px;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+  filter: brightness(100);
+  margin: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login {
+  width: 540px;
+  height: 640px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border-radius: 120px;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+.welcome {
+  font-size: 55px;
+  margin: 10px;
+  margin-top: 20px;
+  color: #112255;
+}
+
+.line {
+  width: 450px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #112255;
+}
+
+.loginInfo {
+  color: #112255;
+}
+
+p {
+  font-weight: 500;
+}
+
+.inputBox {
+  width: 400px;
+  margin-bottom: 25px;
+}
+
+.inputText {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  color: #112255;
+}
+
+input {
+  width: 392px;
+  font-size: 18px;
+  font-family: 'Fredoka';
+  background-color: #3366ff;
+  border-radius: 6px;
+  padding: 5px 7px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+::placeholder {
+  color: #babaff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.error {
+  margin-top: 2px;
+  position: absolute;
+  color: red;
+}
+
+.createAccount {
+  margin-top: 20px;
+  width: 210px;
+  height: 48px;
+  background-color: #112255;
+  color: white;
+  font-family: 'Fredoka';
+  font-size: 22px;
+  font-weight: 600;
+  border: 0;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.createAccount:hover {
+  background-color: #3366ff;
+  transition: .15s;
 }

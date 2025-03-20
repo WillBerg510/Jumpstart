@@ -1,15 +1,114 @@
-import logo from './logo.svg';
+import logo from './images/Jumpstart_logo.png';
+import React from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Jumpstart</h1>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      fields: {
+        userName: {
+          value: "",
+          error: null,
+        },
+        email: {
+          value: "",
+          error: null,
+        },
+        password: {
+          value: "",
+          error: null,
+        },
+        confirmPassword: {
+          value: "",
+          error: null,
+        },
+      }
+    }
+  }
+
+  submit = () => { // When Create Account is clicked
+    const { fields } = this.state;
+    let errorFound = false;
+
+    Object.keys(fields).forEach((key) => { // Give errors for invalid inputs
+      fields[key].error = null;
+      if (!fields[key].value) { // All fields are required
+        fields[key].error = "Required";
+        errorFound = true;
+        return;
+      }
+      if (key === "email") { // Emails must include @ and . to be considered valid
+        if (!fields.email.value.includes("@") || !fields.email.value.includes(".")) {
+          fields[key].error = "Please enter a valid email";
+          errorFound = true;
+          return;
+        }
+      }
+      if (key === "confirmPassword") { // The password field and the confirm password field must match
+        if (fields.password.value !== fields.confirmPassword.value) {
+          fields[key].error = "Passwords must match";
+          errorFound = true;
+          return;
+        }
+      }
+    });
+
+    this.forceUpdate(); // Render page so that errors appear (if any)
+  }
+
+  render() {
+    const {fields, userName, email, password, confirmPassword} = this.state;
+    return (
+      <div className="App">
+        <div className="header">
+        <img src={logo} height={70} className="logo"/>
+        </div>
+        <div className="login">
+          <h1 className="welcome">Welcome!</h1>
+          <div className="line"></div>
+          <p className="loginInfo">Please fill out the information below to create your account.</p>
+          <div className="inputBox">
+            <h3 className="inputText">Name:</h3>
+            <input type="text" name="userName" placeholder="John Smith" onChange={(e) => {
+              this.setState({fields: {
+                ...fields, userName: {...userName, value: e.target.value}
+              }});
+            }}/>
+            <p className="error">{fields.userName.error}</p>
+          </div>
+          <div className="inputBox">
+            <h3 className="inputText">Email:</h3>
+            <input type="text" name="email" placeholder="johnsmith123@email.com" onChange={(e) => {
+              this.setState({fields: {
+                ...fields, email: {...email, value: e.target.value}
+              }});
+            }}/>
+            <p className="error">{fields.email.error}</p>
+          </div>
+          <div className="inputBox">
+            <h3 className="inputText">Password:</h3>
+            <input type="password" name="password" placeholder="**************" onChange={(e) => {
+              this.setState({fields: {
+                ...fields, password: {...password, value: e.target.value}
+              }});
+            }}/>
+            <p className="error">{fields.password.error}</p>
+          </div>
+          <div className="inputBox">
+            <h3 className="inputText">Confirm Password:</h3>
+            <input type="password" name="confirmPassword" placeholder="**************" onChange={(e) => {
+              this.setState({fields: {
+                ...fields, confirmPassword: {...confirmPassword, value: e.target.value}
+              }});
+            }}/>
+            <p className="error">{fields.confirmPassword.error}</p>
+          </div>
+          <button className="createAccount" onClick={this.submit}>Create Account</button>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App;
