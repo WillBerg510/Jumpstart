@@ -5,7 +5,7 @@
 
 ### Branching Strategy
 - `main` (Production-ready code)
-- `develop` (Integrartion branch for new features)
+- `develop` (Integration branch for new features)
 - `feature/*` (Feature development branches)
 - `bugfix/*` (Bug fixes before merging into `develop`)
 - `hotfix/*` (Critical fixes merged into `main`)
