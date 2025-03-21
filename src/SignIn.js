@@ -1,8 +1,9 @@
 import logo from './images/Jumpstart_logo.png';
+import { useNavigate } from 'react-router-dom';
 import React from 'react';
-import './App.css';
+import './SignIn.css';
 
-class App extends React.Component {
+class SignIn extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -54,19 +55,20 @@ class App extends React.Component {
       }
     });
 
-    this.forceUpdate(); // Render page so that errors appear (if any)
+    if (errorFound) this.forceUpdate(); // Render page so that errors appear (if any)
+    else this.props.navigate("/app"); // Sign in if no errors
   }
 
   render() {
     const {fields} = this.state;
     return (
-      <div className="App">
+      <>
         <div className="header">
-        <img src={logo} height={70} className="logo"/>
+          <img src={logo} height={70} className="logo"/>
         </div>
         <div className="login">
           <h1 className="welcome">Welcome!</h1>
-          <div className="line"></div>
+          <div className="loginLine"></div>
           <p className="loginInfo">Please fill out the information below to create your account.</p>
           <div className="inputBox">
             <h3 className="inputText">Name:</h3>
@@ -106,9 +108,12 @@ class App extends React.Component {
           </div>
           <button className="createAccount" onClick={this.submit}>Create Account</button>
         </div>
-      </div>
+      </>
     )
   }
 }
 
-export default App;
+export default () => {
+  const navigate = useNavigate();
+  return (<SignIn navigate={navigate}/>);
+}

@@ -3,9 +3,36 @@ body {
   font-family: 'Fredoka';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #3366ff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.header {
+  height: 100px;
+  width: 100%;
+}
+
+.logo {
+  filter: brightness(100);
+  margin: 15px;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+button {
+  font-family: 'Fredoka';
+  cursor: pointer;
 }

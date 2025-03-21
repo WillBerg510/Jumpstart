@@ -1,0 +1,145 @@
+.taskScreen {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 236px;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  background-color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskScreenHeader {
+  height: 103px;
+  display: flex;
+  align-items: center;
+}
+
+.greeting {
+  color: #112255;
+  font-size: 40px;
+  margin-left: 25px;
+  font-weight: 450;
+}
+
+.logoBox {
+  height: 103px;
+}
+
+.taskScreenLine {
+  height: 10px;
+  width: 100%;
+}
+
+.sidebarLine {
+  background-color: white;
+}
+
+.bodyLine {
+  background-color: #112255;
+}
+
+.sidebarButton {
+  background-color: #3366ff;
+  border-width: 0 0 4px 0;
+  border-color: white;
+  border-style: solid;
+  color: white;
+  font-size: 36px;
+  text-align: left;
+  padding: 15px 0 15px 15px;
+  transition: .15s;
+}
+
+.sidebarButton:hover {
+  background-color: #112255;
+  transition: .15s;
+}
+
+.sidebarEmptySpace {
+  flex: 1;
+}
+
+.logOffButton {
+  border-width: 4px 0 0 0;
+}
+
+.createTask {
+  border: 0;
+  background-color: #3366ff;
+  font-size: 26px;
+  color: white;
+  border-radius: 8px;
+  padding: 5px 15px;
+  margin: 15px;
+  transition: .15s;
+}
+
+.createTask:hover {
+  background-color: #112255;
+  transition: .15s;
+}
+
+.openClose {
+  border: 0;
+  background-color: rgba(0,0,0,0);
+  margin-left: 15px;
+  font-size: 26px;
+  padding: 3px 0;
+  color: #112255;
+}
+
+.task {
+  background-color: #99CCFF;
+  width: 560px;
+  height: 200px;
+  margin: 5px 25px;
+  border: solid;
+  border-radius: 20px;
+  border-color: #112255;
+  border-width: 4px;
+  position: relative;
+}
+
+.taskInfo {
+  font-weight: 400;
+  color: #112255;
+  font-size: 20px;
+  margin: 12px;
+}
+
+.taskButton {
+  border: solid;
+  border-width: 2px;
+  background-color: #3366ff;
+  font-size: 20px;
+  color: white;
+  border-radius: 8px;
+  padding: 5px 15px;
+  position: absolute;
+  transition: .15s;
+}
+
+.taskButton:hover {
+  background-color: #112255;
+  transition: .15s;
+}
+
+.markComplete {
+  bottom: 10px;
+  left: 10px;
+}
+
+.editTask {
+  bottom: 10px;
+  right: 10px;
+}
