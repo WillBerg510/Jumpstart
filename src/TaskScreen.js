@@ -2,6 +2,7 @@ import logo from './images/Jumpstart_logo.png';
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
 import './TaskScreen.css'
+import CreateTask from './CreateTask';
 
 class TaskScreen extends React.Component {
   constructor() {
@@ -9,11 +10,16 @@ class TaskScreen extends React.Component {
     this.state = {
       todayOpen: true,
       laterOpen: false,
+      createTaskOpen: false,
     }
   }
 
+  closeWindow = () => {
+    this.setState({createTaskOpen: false});
+  }
+
   render() {
-    const {todayOpen, laterOpen} = this.state;
+    const {todayOpen, laterOpen, createTaskOpen} = this.state;
     return (
       <div className="taskScreen">
         <div className="sidebar">
@@ -35,7 +41,9 @@ class TaskScreen extends React.Component {
           </div>
           <div className="bodyLine taskScreenLine"/>
           <div className="taskScreenContent">
-            <button className="createTask">Create Task</button>
+            <button className="createTask" onClick={() => {
+              this.setState({createTaskOpen: true})
+            }}>Create Task</button>
             <br/>
             <button className="openClose" onClick={() => {
               this.setState({todayOpen: !todayOpen});
@@ -57,6 +65,8 @@ class TaskScreen extends React.Component {
             }}>{(laterOpen) ? "▾" : "▸"} Tasks for Later</button>
           </div>
         </div>
+        {createTaskOpen && <CreateTask closeWindow={this.closeWindow}/>}
+        {createTaskOpen && <div className="focus"/>}
       </div>
     )
   }

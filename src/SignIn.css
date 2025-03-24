@@ -46,10 +46,16 @@ p {
 }
 
 input {
+  font-family: 'Fredoka';
+}
+
+.loginInput {
   width: 392px;
   font-size: 18px;
-  font-family: 'Fredoka';
   background-color: #3366ff;
+  border: solid;
+  border-width: 3px;
+  border-color: #112255;
   border-radius: 6px;
   padding: 5px 7px;
   color: white;
@@ -59,7 +65,7 @@ input {
   color: #babaff;
 }
 
-.error {
+.loginError {
   margin-top: 2px;
   position: absolute;
   color: red;

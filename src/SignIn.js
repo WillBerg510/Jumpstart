@@ -72,39 +72,39 @@ class SignIn extends React.Component {
           <p className="loginInfo">Please fill out the information below to create your account.</p>
           <div className="inputBox">
             <h3 className="inputText">Name:</h3>
-            <input type="text" name="userName" placeholder="John Smith" onChange={(e) => {
+            <input className="loginInput" type="text" name="userName" placeholder="John Smith" onChange={(e) => {
               this.setState({fields: {
                 ...fields, userName: {...fields.userName, value: e.target.value}
               }});
             }}/>
-            <p className="error">{fields.userName.error}</p>
+            <p className="loginError">{fields.userName.error}</p>
           </div>
           <div className="inputBox">
             <h3 className="inputText">Email:</h3>
-            <input type="text" name="email" placeholder="johnsmith123@email.com" onChange={(e) => {
+            <input className="loginInput" type="text" name="email" placeholder="johnsmith123@email.com" onChange={(e) => {
               this.setState({fields: {
                 ...fields, email: {...fields.email, value: e.target.value}
               }});
             }}/>
-            <p className="error">{fields.email.error}</p>
+            <p className="loginError">{fields.email.error}</p>
           </div>
           <div className="inputBox">
             <h3 className="inputText">Password:</h3>
-            <input type="password" name="password" placeholder="**************" onChange={(e) => {
+            <input className="loginInput" type="password" name="password" placeholder="**************" onChange={(e) => {
               this.setState({fields: {
                 ...fields, password: {...fields.password, value: e.target.value}
               }});
             }}/>
-            <p className="error">{fields.password.error}</p>
+            <p className="loginError">{fields.password.error}</p>
           </div>
           <div className="inputBox">
             <h3 className="inputText">Confirm Password:</h3>
-            <input type="password" name="confirmPassword" placeholder="**************" onChange={(e) => {
+            <input className="loginInput" type="password" name="confirmPassword" placeholder="**************" onChange={(e) => {
               this.setState({fields: {
                 ...fields, confirmPassword: {...fields.confirmPassword, value: e.target.value}
               }});
             }}/>
-            <p className="error">{fields.confirmPassword.error}</p>
+            <p className="loginError">{fields.confirmPassword.error}</p>
           </div>
           <button className="createAccount" onClick={this.submit}>Create Account</button>
         </div>
