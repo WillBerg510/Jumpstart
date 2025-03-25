@@ -56,7 +56,44 @@ class SignIn extends React.Component {
     });
 
     if (errorFound) this.forceUpdate(); // Render page so that errors appear (if any)
-    else this.props.navigate("/app"); // Sign in if no errors
+    else {
+      fetch("http://localhost:5000/auth/register", { // Make call to backend for user registration
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: fields.email.value,
+          password: fields.password.value,
+        }),
+      }).then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error status: ${response.status}`);
+        }
+        return response.json();
+      }).then(() => {
+        fetch("http://localhost:5000/auth/login", { // Make call to backend for login
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: fields.email.value,
+            password: fields.password.value,
+          }),
+        }).then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error status: ${response.status}`);
+          }
+          return response.json();
+        }).then(data => {
+          sessionStorage.setItem("auth_token", data.token);
+          this.props.navigate("/app"); // Sign in if no errors
+        }).catch(error => {
+          alert(error);
+        });
+      });
+    }
   }
 
   render() {
