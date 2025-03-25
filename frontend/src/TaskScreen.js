@@ -11,15 +11,52 @@ class TaskScreen extends React.Component {
       todayOpen: true,
       laterOpen: false,
       createTaskOpen: false,
+      tasks: [],
     }
+  }
+
+  getHabits = () => {
+    fetch("http://localhost:5000/habits/", { // Make call to backend for getting habits
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,
+      },
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error status: ${response.status}`);
+      }
+      return response.json();
+    }).then(data => {
+      this.setState({tasks: data.habits});
+    }).catch(error => {
+      alert(error);
+    });
+  }
+
+  componentDidMount() {
+    this.getHabits();
   }
 
   closeWindow = () => {
     this.setState({createTaskOpen: false});
+    this.getHabits();
   }
 
   render() {
-    const {todayOpen, laterOpen, createTaskOpen} = this.state;
+    const {todayOpen, laterOpen, createTaskOpen, tasks} = this.state;
+
+    const taskDivs = tasks.map((task) => 
+      <div className="task">
+        <p className="taskInfo">
+          Task: {task.name}<br/>
+          Priority: {task.priority}<br/>
+          Description: {task.description}
+        </p>
+        <button className="taskButton markComplete">Mark as Complete</button>
+        <button className="taskButton editTask">Edit Task</button>
+      </div>
+    )
+
     return (
       <div className="taskScreen">
         <div className="sidebar">
@@ -50,15 +87,7 @@ class TaskScreen extends React.Component {
             }}>{(todayOpen) ? "▾" : "▸"} Tasks for Today</button>
             <br/>
             {(todayOpen) && <div className="tasksToday">
-              <div className="task">
-                <p className="taskInfo">
-                  Task: Make Dinner<br/>
-                  Priority: Medium<br/>
-                  Notes: Making a nice and healthy dinner is crucial for ensuring a productive evening!
-                </p>
-                <button className="taskButton markComplete">Mark as Complete</button>
-                <button className="taskButton editTask">Edit Task</button>
-              </div>
+              <ul>{taskDivs}</ul>
             </div>}
             <button className="openClose" onClick={() => {
               this.setState({laterOpen: !laterOpen});

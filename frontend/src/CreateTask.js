@@ -40,6 +40,35 @@ class CreateTask extends React.Component {
     }});
   } 
 
+  submitTask = () => {
+    const {fields} = this.state;
+    console.log(fields.name.value);
+    console.log(fields.priority.value);
+    console.log(fields.description.value);
+    console.log([fields.repeats.value]);
+    fetch("http://localhost:5000/habits", { // Make call to backend for task creation
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,
+      },
+      body: JSON.stringify({
+        name: fields.name.value,
+        priority: fields.priority.value,
+        description: fields.description.value,
+        repeats: [fields.repeats.value],
+      }),
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error status: ${response.status}`);
+      }
+      return response.json();
+    }).catch(error => {
+      alert(error);
+    });
+    this.props.closeWindow();
+  }
+
   render() {
     const {fields} = this.state;
     return (
@@ -56,15 +85,15 @@ class CreateTask extends React.Component {
         </div>
         <div className="taskInputBox">
           <h3 className="taskInputText">Priority:</h3>
-          <input className="taskRadioInput" type="radio" value="veryHigh" id="veryHigh" name="priority" onChange={this.priorityChange}/>
+          <input className="taskRadioInput" type="radio" value="Very High" id="veryHigh" name="priority" onChange={this.priorityChange}/>
           <label className="taskRadioText" for="veryHigh">Very High</label>
-          <input className="taskRadioInput" type="radio" value="high" id="high" name="priority" onChange={this.priorityChange}/>
+          <input className="taskRadioInput" type="radio" value="High" id="high" name="priority" onChange={this.priorityChange}/>
           <label className="taskRadioText" for="high">High</label>
-          <input className="taskRadioInput" type="radio" value="medium" id="medium" name="priority" onChange={this.priorityChange}/>
+          <input className="taskRadioInput" type="radio" value="Medium" id="medium" name="priority" onChange={this.priorityChange}/>
           <label className="taskRadioText" for="medium">Medium</label>
-          <input className="taskRadioInput" type="radio" value="low" id="low" name="priority" onChange={this.priorityChange}/>
+          <input className="taskRadioInput" type="radio" value="Low" id="low" name="priority" onChange={this.priorityChange}/>
           <label className="taskRadioText" for="low">Low</label>
-          <input className="taskRadioInput" type="radio" value="veryLow" id="veryLow" name="priority" onChange={this.priorityChange}/>
+          <input className="taskRadioInput" type="radio" value="Very Low" id="veryLow" name="priority" onChange={this.priorityChange}/>
           <label className="taskRadioText" for="veryLow">Very Low</label>
           <p className="error taskError">{fields.priority.error}</p>
         </div>
@@ -89,9 +118,7 @@ class CreateTask extends React.Component {
           <label className="taskRadioText" for="annually">Annually</label>
           <p className="error taskError">{fields.repeats.error}</p>
         </div>
-        <button className="submitTask" onClick={() => {
-          this.props.closeWindow();
-        }}>Create Task</button>
+        <button className="submitTask" onClick={this.submitTask}>Create Task</button>
       </div>
     )
   }

@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: row;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: white;
 }
 
 .sidebar {
   width: 236px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  background-color: #3366ff;
 }
 
 .body {
@@ -16,6 +20,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin-left: 236px;
 }
 
 .taskScreenHeader {
@@ -38,6 +43,7 @@
 .taskScreenLine {
   height: 10px;
   width: 100%;
+  min-height: 10px;
 }
 
 .sidebarLine {
@@ -102,7 +108,7 @@
   background-color: #99CCFF;
   width: 560px;
   height: 200px;
-  margin: 5px 25px;
+  margin: 15px 0px;
   border: solid;
   border-radius: 20px;
   border-color: #112255;
