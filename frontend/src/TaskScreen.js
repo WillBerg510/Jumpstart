@@ -70,6 +70,7 @@ class TaskScreen extends React.Component {
           <div className="sidebarEmptySpace"/>
           <button className="sidebarButton logOffButton" onClick={() => {
             this.props.navigate("/");
+            sessionStorage.removeItem("auth_token");
           }}>Log Off</button>
         </div>
         <div className="body">
