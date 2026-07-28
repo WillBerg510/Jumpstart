@@ -43,7 +43,7 @@ class Login extends React.Component {
 
     if (errorFound) this.forceUpdate(); // Render page so that errors appear (if any)
     else {
-      fetch("https://wb-jumpstart-backend.netlify.app/auth/login", { // Make call to backend for login
+      fetch("https://packright-backend.onrender.com//auth/login", { // Make call to backend for login
         method: "POST",
         headers: {
           "Content-Type": "application/json",

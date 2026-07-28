@@ -14,7 +14,7 @@ class TaskScreen extends React.Component {
   }
 
   getStats = () => { // Make call to backend for getting user's stats
-    fetch("https://wb-jumpstart-backend.netlify.app/habits/stats", {
+    fetch("https://packright-backend.onrender.com//habits/stats", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,

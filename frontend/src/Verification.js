@@ -5,7 +5,7 @@ import './Register.css';
 
 class Verification extends React.Component {
   componentDidMount() {
-    fetch(`https://wb-jumpstart-backend.netlify.app/auth/verify/${this.props.params.token}`, {
+    fetch(`https://packright-backend.onrender.com//auth/verify/${this.props.params.token}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
