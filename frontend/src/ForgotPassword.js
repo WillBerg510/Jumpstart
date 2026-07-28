@@ -39,7 +39,7 @@ class ForgotPassword extends React.Component {
 
     if (errorFound) this.forceUpdate(); // Render page so that errors appear (if any)
     else {
-      fetch("https://packright-backend.onrender.com/auth/forgot-password", { // Make call to backend for forgetting password
+      fetch("https://server-js.willbergforever.com/auth/forgot-password", { // Make call to backend for forgetting password
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -100,7 +100,7 @@ class EditTask extends React.Component {
         parseInt(fields.endTime.value.split(':')[0]) - (fields.endTime.value.split(':')[0] == "12" ? 12 : 0) + (fields.endTime.value[fields.endTime.value.length - 2].toUpperCase() === "P" ? 12 : 0),
         parseInt(fields.endTime.value.split(':')[1].slice(0, 2))
       );
-      fetch(`https://packright-backend.onrender.com/habits/${this.props.task._id}`, {
+      fetch(`https://server-js.willbergforever.com/habits/${this.props.task._id}`, {
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,
@@ -126,7 +126,7 @@ class EditTask extends React.Component {
   }
 
   deleteTask = () => {
-    fetch(`https://packright-backend.onrender.com/habits/${this.props.task._id}`, {
+    fetch(`https://server-js.willbergforever.com/habits/${this.props.task._id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,

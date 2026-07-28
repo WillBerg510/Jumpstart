@@ -5,7 +5,7 @@ import './Register.css';
 
 class Verification extends React.Component {
   componentDidMount() {
-    fetch(`https://packright-backend.onrender.com/auth/verify/${this.props.params.token}`, {
+    fetch(`https://server-js.willbergforever.com/auth/verify/${this.props.params.token}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

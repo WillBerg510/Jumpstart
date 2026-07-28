@@ -21,7 +21,7 @@ class TaskScreen extends React.Component {
   }
 
   getHabits = (date) => {
-    fetch(`https://packright-backend.onrender.com/habits/day/${
+    fetch(`https://server-js.willbergforever.com/habits/day/${
       date.getFullYear()
     }-${
       (date.getMonth() + 1).toLocaleString('en-US', {
@@ -50,7 +50,7 @@ class TaskScreen extends React.Component {
   }
 
   getName = () => { // Make call to backend for getting user's name
-    fetch("https://packright-backend.onrender.com/auth/user", {
+    fetch("https://server-js.willbergforever.com/auth/user", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,
@@ -90,7 +90,7 @@ class TaskScreen extends React.Component {
     const {listDate} = this.state;
     const justListDate = new Date(listDate);
     justListDate.setUTCHours(0, 0, 0, 0);
-    fetch(`https://packright-backend.onrender.com/habits/${task._id}`, {
+    fetch(`https://server-js.willbergforever.com/habits/${task._id}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,
