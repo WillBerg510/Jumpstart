@@ -43,7 +43,7 @@ class ChangePassword extends React.Component {
 
     if (errorFound) this.forceUpdate(); // Render page so that errors appear (if any)
     else {
-      fetch(`https://packright-backend.onrender.com//auth/reset-password/${this.props.params.token}`, { // Make call to backend for changing password
+      fetch(`https://packright-backend.onrender.com/auth/reset-password/${this.props.params.token}`, { // Make call to backend for changing password
         method: "POST",
         headers: {
           "Content-Type": "application/json",

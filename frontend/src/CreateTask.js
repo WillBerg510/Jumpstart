@@ -147,7 +147,7 @@ class CreateTask extends React.Component {
         parseInt(fields.endTime.value.split(':')[0]) - (fields.endTime.value.split(':')[0] == "12" ? 12 : 0) + (fields.endTime.value[fields.endTime.value.length - 2].toUpperCase() === "P" ? 12 : 0),
         parseInt(fields.endTime.value.split(':')[1].slice(0, 2))
       );
-      fetch("https://packright-backend.onrender.com//habits", { // Make call to backend for task creation
+      fetch("https://packright-backend.onrender.com/habits", { // Make call to backend for task creation
         method: "POST",
         headers: {
           "Content-Type": "application/json",
