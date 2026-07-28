@@ -19,7 +19,28 @@ mongoose.connect(process.env.MONGO_URI)
     console.error('MongoDB connection error:', err);
 });
 
-app.use(cors()); // DEVELOPMENT ONLY, INSECURE
+if (process.env.DEV_MODE) {
+    app.use(cors({
+        origin: true,
+        credentials: true,
+    }));
+} else {
+    app.use(cors({
+        origin: (origin, callback) => {
+            try {
+                const host = (new URL(origin)).hostname;
+                if (host == "willbergforever.com" || host.endsWith(".willbergforever.com")) {
+                    callback(null, origin);
+                } else {
+                    callback(null);
+                }
+            } catch {
+                callback(null);
+            }
+        },
+        credentials: true,
+    }));
+}
 app.use(express.json());
 app.use('/habits', habitsRouter);
 app.use('/auth', authRouter);
