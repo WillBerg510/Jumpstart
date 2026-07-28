@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
 
         // email verification stuff
         const verificationToken = crypto.randomBytes(32).toString('hex'); // creating a new email verify token
-        const verifyURL = `https://jumpstart.willbegforever.com/verify/${verificationToken}`;
+        const verifyURL = `https://jumpstart.willbergforever.com/verify/${verificationToken}`;
         await transporter.sendMail({
             from: `Jumpstart App <noreply@jumpstart.willbergforever.com>`,
             to: email,
