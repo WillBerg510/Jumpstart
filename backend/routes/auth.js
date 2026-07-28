@@ -35,9 +35,9 @@ router.post('/register', async (req, res) => {
 
         // email verification stuff
         const verificationToken = crypto.randomBytes(32).toString('hex'); // creating a new email verify token
-        const verifyURL = `http://localhost:3000/verify/${verificationToken}`;
+        const verifyURL = `https://jumpstart.willbegforever.com/verify/${verificationToken}`;
         await transporter.sendMail({
-            from: `Jumpstart App <noreply@jumpstart.warphi.com>`,
+            from: `Jumpstart App <noreply@jumpstart.willbergforever.com>`,
             to: email,
             subject: 'Verify your email',
             html: `<p>Click <a href="${verifyURL}">here</a> to verify your account.</p>`
@@ -132,10 +132,10 @@ router.post('/forgot-password', async (req, res) => {
         user.resetTokenExpiry = Date.now() + 1000 * 3600;  // 1 hour from now
         await user.save();
 
-        const resetLink = `http://localhost:3000/reset/${resetToken}`;
+        const resetLink = `https://jumpstart.willbergforever.com/reset/${resetToken}`;
 
         await transporter.sendMail({
-            from: `Jumpstart App <noreply@jumpstart.warphi.com>`,
+            from: `Jumpstart App <noreply@jumpstart.willbergforever.com>`,
             to: email,
             subject: 'Password Reset Request',
             html: `<p>Click <a href="${resetLink}">here</a> to reset your password. This link is valid for 1 hour.</p>`

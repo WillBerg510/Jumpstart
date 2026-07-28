@@ -21,7 +21,7 @@ class TaskScreen extends React.Component {
   }
 
   getHabits = (date) => {
-    fetch(`http://localhost:5000/habits/day/${
+    fetch(`https://wb-jumpstart-backend.netlify.app/habits/day/${
       date.getFullYear()
     }-${
       (date.getMonth() + 1).toLocaleString('en-US', {
@@ -50,7 +50,7 @@ class TaskScreen extends React.Component {
   }
 
   getName = () => { // Make call to backend for getting user's name
-    fetch("http://localhost:5000/auth/user", {
+    fetch("https://wb-jumpstart-backend.netlify.app/auth/user", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,
@@ -90,7 +90,7 @@ class TaskScreen extends React.Component {
     const {listDate} = this.state;
     const justListDate = new Date(listDate);
     justListDate.setUTCHours(0, 0, 0, 0);
-    fetch(`http://localhost:5000/habits/${task._id}`, {
+    fetch(`https://wb-jumpstart-backend.netlify.app/habits/${task._id}`, {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("auth_token")}`,
